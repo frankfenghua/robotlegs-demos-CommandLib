@@ -1,10 +1,23 @@
-package org.robotlegs.extentions.mvcs.macro.examples.commands
+/**
+ *  Macro commands example usage in the Robot Legs Framework
+ * 
+ * Any portion of this may be reused for any purpose where not 
+ * licensed by another party restricting such use. 
+ * 
+ * Please leave the credits intact.
+ * 
+ * Chase Brammer
+ * http://chasebrammer.com
+ * cbrammer@gmail.com
+ */
+
+package org.robotlegs.utilities.macro.examples.simpleExample.commands
 {
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	import org.robotlegs.extentions.mvcs.macro.AsyncCommand;
-	import org.robotlegs.extentions.mvcs.macro.examples.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.AsyncCommand;
 	
 	public class CommandC extends AsyncCommand
 	{

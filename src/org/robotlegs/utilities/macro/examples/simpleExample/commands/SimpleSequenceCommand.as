@@ -1,13 +1,28 @@
-package org.robotlegs.extentions.mvcs.macro.examples.commands
+/**
+ *  Macro commands example usage in the Robot Legs Framework
+ * 
+ * Any portion of this may be reused for any purpose where not 
+ * licensed by another party restricting such use. 
+ * 
+ * Please leave the credits intact.
+ * 
+ * Chase Brammer
+ * http://chasebrammer.com
+ * cbrammer@gmail.com
+ */
+
+package org.robotlegs.utilities.macro.examples.simpleExample.commands
 {
-	import org.robotlegs.extentions.mvcs.macro.ParallelCommand;
-	import org.robotlegs.extentions.mvcs.macro.SequenceCommand;
-	import org.robotlegs.extentions.mvcs.macro.examples.commands.events.MyMacroCommandEvent;
-	import org.robotlegs.extentions.mvcs.macro.examples.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.SequenceCommand;
 	
-	public class SimpleParallelCommand extends ParallelCommand
+	public class SimpleSequenceCommand extends SequenceCommand
 	{
-		public function SimpleParallelCommand()
+		/**
+		 * Example of a simple sequence command 
+		 */		
+		public function SimpleSequenceCommand()
 		{
 			super();
 			
@@ -40,12 +55,13 @@ package org.robotlegs.extentions.mvcs.macro.examples.commands
 		 * 
 		 */		
 		override protected function commandComplete():void {
+			
 			//Finish up
-			dispatch(new MyMacroCommandEvent(MyMacroCommandEvent.MY_PARALLEL_COMPLETE));
+			dispatch(new MyMacroCommandEvent(MyMacroCommandEvent.MY_SEQUENCE_COMPLETE));
 			
 			// Always make sure you call the sumer so things can wrap up
 			super.commandComplete();
+			
 		}
-		
 	}
 }
