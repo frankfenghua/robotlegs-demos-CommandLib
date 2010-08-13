@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   preinitialize="preInitHandler(event)" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:view="org.robotlegs.extentions.mvcs.macro.examples.view.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import org.robotlegs.extentions.mvcs.macro.examples.ExampleContext;
+			
+			private var exampleContext:ExampleContext;
+			
+			protected function preInitHandler(e:FlexEvent):void {
+				this.exampleContext = new ExampleContext(this);
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<view:ExampleView/>
+</s:Application>
