@@ -13,10 +13,17 @@
 
 package org.robotlegs.utilities.macro.examples.simpleExample.commands
 {
+	import org.robotlegs.utilities.macro.ParallelCommand;
+	import org.robotlegs.utilities.macro.SequenceCommand;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
-	import org.robotlegs.utilities.macro.ParallelCommand;
 	
+	/**
+	 * Shows how a batch command can use other batch commands inside of it
+	 *  
+	 * @author chbrammer
+	 * 
+	 */	
 	public class CompositeCommand extends ParallelCommand
 	{
 		public function CompositeCommand()
@@ -30,6 +37,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 			addCommand(SimpleSequenceCommand);
 			
 			addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
+			
 		}
 		
 		override public function execute():void
