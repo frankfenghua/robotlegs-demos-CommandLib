@@ -30,6 +30,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.view
 			eventMap.mapListener( eventDispatcher, MyMacroCommandEvent.MY_PARALLEL_COMPLETE, onMyParallelComplete );
 			eventMap.mapListener( eventDispatcher, MyMacroCommandEvent.MY_SEQUENCE_COMPLETE, onMySequenceComplete );
 			eventMap.mapListener( eventDispatcher, MyMacroCommandEvent.MY_COMPOSITE_COMPLETE, onMyCompositeComplete );
+			eventMap.mapListener( eventDispatcher, MyMacroCommandEvent.MY_PROGRAMATIC_COMPLETE, onMyProgramaticComplete );
 			eventMap.mapListener( eventDispatcher, SimpleCommandEvent.COMMAND_A_COMPLETE, onCommandAComplete );
 			eventMap.mapListener( eventDispatcher, SimpleCommandEvent.COMMAND_B_COMPLETE, onCommandBComplete );
 			eventMap.mapListener( eventDispatcher, SimpleCommandEvent.COMMAND_C_COMPLETE, onCommandCComplete );
@@ -38,6 +39,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.view
 			view.parallelBtn.addEventListener(MouseEvent.CLICK, doParallel);
 			view.sequenceBtn.addEventListener(MouseEvent.CLICK, doSequence);
 			view.compositeBtn.addEventListener(MouseEvent.CLICK, doComposite);
+			view.programaticBtn.addEventListener(MouseEvent.CLICK, doProgramatic);
 		}
 		
 		protected function doParallel(e:MouseEvent):void 
@@ -58,6 +60,12 @@ package org.robotlegs.utilities.macro.examples.simpleExample.view
 			dispatch(new MyMacroCommandEvent(MyMacroCommandEvent.MY_COMPOSITE));
 		}
 		
+		protected function doProgramatic(e:MouseEvent):void 
+		{
+			addOutput(" ---- Start Programatic Command ----");
+			dispatch(new MyMacroCommandEvent(MyMacroCommandEvent.MY_PROGRAMATIC));
+		}
+		
 		protected function addOutput(text:String):void 
 		{
 			view.output.text += text + "\n\n";
@@ -76,6 +84,11 @@ package org.robotlegs.utilities.macro.examples.simpleExample.view
 		protected function onMyCompositeComplete(e:MyMacroCommandEvent):void 
 		{
 			addOutput(" ---- Composite Command Complete ----");
+		}
+
+		protected function onMyProgramaticComplete(e:MyMacroCommandEvent):void 
+		{
+			addOutput(" ---- Programatic Command Complete ----");
 		}
 		
 		protected function onCommandAComplete(e:SimpleCommandEvent):void 

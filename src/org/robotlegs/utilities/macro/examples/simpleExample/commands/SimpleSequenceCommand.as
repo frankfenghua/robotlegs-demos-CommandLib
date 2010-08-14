@@ -66,7 +66,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		 * @param e
 		 */		
 		private function onExecutionStatusEvent(e:SubcommandExecutionStatusEvent):void {
-			trace(e.subcommandDescriptor.command, e.subcommandDescriptor.executionStatus);
+			trace(e.subcommandDescriptor.commandClass, e.subcommandDescriptor.executionStatus);
 		}
 		
 		/**

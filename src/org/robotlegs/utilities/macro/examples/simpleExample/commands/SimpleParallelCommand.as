@@ -55,7 +55,6 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		override public function execute():void {
 			// Make sure to call the super here, because that is what kicks off the process
 			super.execute();
-			
 		}
 		
 		/**
@@ -63,7 +62,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		 * @param e
 		 */		
 		private function onExecutionStatusEvent(e:SubcommandExecutionStatusEvent):void {
-			trace(e.subcommandDescriptor.command, e.subcommandDescriptor.executionStatus);
+			trace(e.subcommandDescriptor.commandClass, e.subcommandDescriptor.executionStatus);
 		}
 		
 		/**

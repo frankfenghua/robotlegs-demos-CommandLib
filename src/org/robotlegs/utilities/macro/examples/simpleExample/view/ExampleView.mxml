@@ -12,6 +12,7 @@
 			<s:Button id="sequenceBtn" label="Do Sequence Command"/>
 			<s:Button id="parallelBtn" label="Do Parallel Command"/>
 			<s:Button id="compositeBtn" label="Do Composite Command"/>
+			<s:Button id="programaticBtn" label="Do Programatic Command"/>
 		</s:HGroup>
 	</s:VGroup>
 </s:Panel>

@@ -31,13 +31,9 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 			super();
 			
 			// This is where we add in all of the commands that we want execute
-			
 			addCommand(SimpleParallelCommand);
-			
 			addCommand(SimpleSequenceCommand);
-			
 			addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
-			
 		}
 		
 		override public function execute():void

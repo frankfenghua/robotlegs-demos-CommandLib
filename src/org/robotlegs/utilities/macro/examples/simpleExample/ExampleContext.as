@@ -16,17 +16,18 @@ package org.robotlegs.utilities.macro.examples.simpleExample
 	import flash.display.DisplayObjectContainer;
 	
 	import org.robotlegs.base.ContextEvent;
+	import org.robotlegs.mvcs.Context;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandA;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandB;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandC;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CompositeCommand;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.ProgramaticCommand;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.SimpleParallelCommand;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.SimpleSequenceCommand;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.view.ExampleMediator;
 	import org.robotlegs.utilities.macro.examples.simpleExample.view.ExampleView;
-	import org.robotlegs.mvcs.Context;
 	
 	public class ExampleContext extends Context
 	{
@@ -41,6 +42,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample
 			commandMap.mapEvent(MyMacroCommandEvent.MY_SEQUENCE, SimpleSequenceCommand, MyMacroCommandEvent);
 			commandMap.mapEvent(MyMacroCommandEvent.MY_PARALLEL, SimpleParallelCommand, MyMacroCommandEvent);
 			commandMap.mapEvent(MyMacroCommandEvent.MY_COMPOSITE, CompositeCommand, MyMacroCommandEvent);
+			commandMap.mapEvent(MyMacroCommandEvent.MY_PROGRAMATIC, ProgramaticCommand, MyMacroCommandEvent);
 			commandMap.mapEvent(SimpleCommandEvent.COMMAND_A, CommandA, SimpleCommandEvent);
 			commandMap.mapEvent(SimpleCommandEvent.COMMAND_B, CommandB, SimpleCommandEvent);
 			commandMap.mapEvent(SimpleCommandEvent.COMMAND_C, CommandC, SimpleCommandEvent);

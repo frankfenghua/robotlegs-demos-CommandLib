@@ -23,6 +23,8 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands.events
 		public static const MY_PARALLEL_COMPLETE:String = "myParallelComplete";
 		public static const MY_COMPOSITE:String = "myComposite";
 		public static const MY_COMPOSITE_COMPLETE:String = "myCompositeComplete";
+		public static const MY_PROGRAMATIC:String = "myProgramatic";
+		public static const MY_PROGRAMATIC_COMPLETE:String = "myProgramaticComplete";
 
 		public function MyMacroCommandEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
 		{
