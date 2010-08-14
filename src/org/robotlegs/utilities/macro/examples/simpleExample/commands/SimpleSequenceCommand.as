@@ -13,9 +13,11 @@
 
 package org.robotlegs.utilities.macro.examples.simpleExample.commands
 {
+	import org.robotlegs.utilities.macro.SequenceCommand;
+	import org.robotlegs.utilities.macro.SubcommandDescriptor;
+	import org.robotlegs.utilities.macro.SubcommandExecutionStatusEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
-	import org.robotlegs.utilities.macro.SequenceCommand;
 	
 	public class SimpleSequenceCommand extends SequenceCommand
 	{
@@ -38,15 +40,33 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 			// This is marked as completed only after it has actually been completed
 			addCommand(CommandB);
 			
-			// This command take a payload object 
-			addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
+			// This command take a payload object, but also consumes the return values
+			// of addCommand which is a SubcommandDescritor.  This can be used to listen
+			// to the execution status events of this specific command
+			var mySubcommandDescriptor:SubcommandDescriptor = addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
+			
+			// When the subcommand has started execution
+			mySubcommandDescriptor.addEventListener(SubcommandExecutionStatusEvent.SUBCOMMAND_STARTED, onExecutionStatusEvent);
+			
+			// When the subcommand has completed successfully
+			mySubcommandDescriptor.addEventListener(SubcommandExecutionStatusEvent.SUBCOMMAND_COMPLETED, onExecutionStatusEvent);
+			
+			// When the subcommand has failed
+			mySubcommandDescriptor.addEventListener(SubcommandExecutionStatusEvent.SUBCOMMAND_FAILED, onExecutionStatusEvent);
 		}
 		
-		override public function execute():void
-		{
+		override public function execute():void {
 			// Make sure to call the super here, because that is what kicks off the process
 			super.execute();
 			
+		}
+		
+		/**
+		 * Listens for any Subcommand Execution Status Events and traces out the Class Name and Status 
+		 * @param e
+		 */		
+		private function onExecutionStatusEvent(e:SubcommandExecutionStatusEvent):void {
+			trace(e.subcommandDescriptor.command, e.subcommandDescriptor.executionStatus);
 		}
 		
 		/**

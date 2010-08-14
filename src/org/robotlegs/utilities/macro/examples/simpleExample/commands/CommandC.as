@@ -36,10 +36,10 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		private function onTimerComplete(e:TimerEvent):void {
 			if(simpleCommandEvent.doFail) {
 				dispatch(new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C_FAILED));
-				commandComplete();
+				commandIncomplete();
 			} else {
 				dispatch(new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C_COMPLETE));
-				commandIncomplete();
+				commandComplete();
 			}
 		}
 	}
