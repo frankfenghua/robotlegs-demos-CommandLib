@@ -17,6 +17,9 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 	import org.robotlegs.utilities.macro.SequenceCommand;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandA;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandB;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandC;
 	
 	/**
 	 * Shows how to create and add a programitcally created command

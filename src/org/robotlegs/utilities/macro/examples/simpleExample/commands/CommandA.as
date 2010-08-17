@@ -30,11 +30,6 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 	 */	
 	public class CommandA extends Command
 	{
-		public function CommandA()
-		{
-			super();
-		}
-		
 		override public function execute():void {
 			// Executes immediately and marks itself as complete
 			

@@ -18,6 +18,9 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 	import org.robotlegs.utilities.macro.SubcommandExecutionStatusEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandA;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandB;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandC;
 	
 	public class SimpleSequenceCommand extends SequenceCommand
 	{
@@ -27,7 +30,10 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		public function SimpleSequenceCommand()
 		{
 			super();
-			
+		}
+		
+		override public function execute():void {
+			this.isAtomic = true;
 			// This is where we add in all of the commands that we want execute
 			
 			// this is an example of a command that doesn't take a payload object
@@ -43,7 +49,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 			// This command take a payload object, but also consumes the return values
 			// of addCommand which is a SubcommandDescritor.  This can be used to listen
 			// to the execution status events of this specific command
-			var mySubcommandDescriptor:SubcommandDescriptor = addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
+			var mySubcommandDescriptor:SubcommandDescriptor = addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C, false));
 			
 			// When the subcommand has started execution
 			mySubcommandDescriptor.addEventListener(SubcommandExecutionStatusEvent.SUBCOMMAND_STARTED, onExecutionStatusEvent);
@@ -53,9 +59,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 			
 			// When the subcommand has failed
 			mySubcommandDescriptor.addEventListener(SubcommandExecutionStatusEvent.SUBCOMMAND_FAILED, onExecutionStatusEvent);
-		}
-		
-		override public function execute():void {
+			
 			// Make sure to call the super here, because that is what kicks off the process
 			super.execute();
 			
@@ -75,6 +79,21 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		 * 
 		 */		
 		override protected function commandComplete():void {
+			
+			//Finish up
+			dispatch(new MyMacroCommandEvent(MyMacroCommandEvent.MY_SEQUENCE_COMPLETE));
+			
+			// Always make sure you call the sumer so things can wrap up
+			super.commandComplete();
+			
+		}
+		
+		/**
+		 * This is the function we can override that gets called when we are finished 
+		 * with all our commands
+		 * 
+		 */		
+		override protected function commandIncomplete():void {
 			
 			//Finish up
 			dispatch(new MyMacroCommandEvent(MyMacroCommandEvent.MY_SEQUENCE_COMPLETE));

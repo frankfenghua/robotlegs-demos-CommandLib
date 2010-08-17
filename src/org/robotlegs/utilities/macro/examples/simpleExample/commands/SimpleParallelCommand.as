@@ -18,14 +18,21 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 	import org.robotlegs.utilities.macro.SubcommandExecutionStatusEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandA;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandB;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandC;
 	
 	public class SimpleParallelCommand extends ParallelCommand
 	{
 		public function SimpleParallelCommand()
 		{
 			super();
-			
-			// This is where we add in all of the commands that we want execute
+		}
+		
+		override public function execute():void {
+			// This is where we add in all of the commands that we want execute 
+			// BEFORE we call the super's execute, by putting the commands here,
+			// we can access all the injected data
 			
 			// this is an example of a command that doesn't take a payload object
 			// and is also just a simple command (doens't extend AsyncCommand)
@@ -50,9 +57,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 			
 			// When the subcommand has failed
 			mySubcommandDescriptor.addEventListener(SubcommandExecutionStatusEvent.SUBCOMMAND_FAILED, onExecutionStatusEvent);
-		}
-		
-		override public function execute():void {
+			
 			// Make sure to call the super here, because that is what kicks off the process
 			super.execute();
 		}

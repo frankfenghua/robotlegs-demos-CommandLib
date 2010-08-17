@@ -19,6 +19,7 @@ package org.robotlegs.utilities.macro.examples.simpleExample.view
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
 	import org.robotlegs.mvcs.Mediator;
+	import org.robotlegs.utilities.macro.examples.simpleExample.view.ExampleView;
 	
 	public class ExampleMediator extends Mediator implements IMediator
 	{

@@ -17,6 +17,9 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 	import org.robotlegs.utilities.macro.SequenceCommand;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.MyMacroCommandEvent;
 	import org.robotlegs.utilities.macro.examples.simpleExample.commands.events.SimpleCommandEvent;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.CommandC;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.SimpleParallelCommand;
+	import org.robotlegs.utilities.macro.examples.simpleExample.commands.SimpleSequenceCommand;
 	
 	/**
 	 * Shows how a batch command can use other batch commands inside of it
@@ -29,15 +32,15 @@ package org.robotlegs.utilities.macro.examples.simpleExample.commands
 		public function CompositeCommand()
 		{
 			super();
-			
-			// This is where we add in all of the commands that we want execute
-			addCommand(SimpleParallelCommand);
-			addCommand(SimpleSequenceCommand);
-			addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
 		}
 		
 		override public function execute():void
 		{
+			// This is where we add in all of the commands that we want execute
+			addCommand(SimpleParallelCommand);
+			addCommand(SimpleSequenceCommand);
+			addCommand(CommandC, new SimpleCommandEvent(SimpleCommandEvent.COMMAND_C));
+			
 			// Make sure to call the super here, because that is what kicks off the process
 			super.execute();
 			
